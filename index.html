@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<title>Título da Página</title>
+	
+	<!--
+		jQuery UI 1.12
+		https://jqueryui.com/
+	-->
+	<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+</head>
+<body>
+	
+	<div id="barra"></div>
+	
+	<p>
+		Valor atual: <span id="valor-atual">1</span>
+	</p>
+	
+	<p>
+		<button type="button" onclick="exibirValor()">Exibir Valor</button>
+		<button type="button" onclick="redefinirValor()">Redefinir Valor</button>
+	</p>
+	
+	<!-- jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<!--
+		jQuery UI 1.12
+		https://jqueryui.com/
+	-->
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	<script type="text/javascript">
+		// Mais informações:
+		// https://api.jqueryui.com/slider/
+		
+		$("#barra").slider({
+			min: 1,
+			max: 5,
+			
+			range: "min",
+			value: 1,
+			
+			slide: atualizar,
+			change: atualizar
+		});
+		
+		function atualizar(evento, objeto) {
+			var valor = objeto.value;
+			
+			$("#valor-atual").text(valor);
+		}
+		
+		function exibirValor() {
+			var valor = $("#barra").slider("value");
+			
+			console.log(valor);
+		}
+		
+		function redefinirValor() {
+			$("#barra").slider("value", 1);
+		}
+	</script>
+</body>
+</html>
